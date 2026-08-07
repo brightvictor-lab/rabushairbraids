@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="MobileOptimized" content="width" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="theme-color" content="#160b10" />
+<title>Reschedule Appointment — Rabus Hair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" href="image/logo.png" />
+<style>
+  :root{
+    --ink:#000000; --ink2:#120309; --ink3:#1c0710; --cream:#f6ecef; --cream-dim:#cdb7bf;
+    --gold:#c9a86a; --gold-bright:#e6c989; --gold-deep:#8e6f3c; --line:rgba(201,168,106,.18);
+    --pink:#f04f9c; --pink-soft:#ffc0dd; --pink-deep:#b3186a;
+    --grad:linear-gradient(135deg,#8e6f3c,#c9a86a,#e6c989,#c9a86a,#8e6f3c);
+    --grad-pink:linear-gradient(135deg,#b3186a,#f04f9c,#ffc0dd,#f04f9c,#b3186a);
+    --f-display:'Cormorant Garamond',serif; --f-body:'Inter Tight',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{
+    max-width:100vw;
+    width:100%;
+    overflow-x:hidden;
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+  }
+  body{background:var(--ink);color:var(--cream);font-family:var(--f-body);min-height:100vh;
+    padding:28px 16px;background-image:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(201,168,106,.10),transparent 60%);}
+  .wrap{max-width:560px;margin:0 auto;}
+  .head{text-align:center;margin-bottom:26px;}
+  .logo{width:88px;height:88px;border-radius:50%;object-fit:cover;border:2px solid var(--pink);box-shadow:0 0 22px rgba(240,79,156,.4);
+    box-shadow:0 0 40px rgba(201,168,106,.25);margin-bottom:12px;}
+  .brand{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--cream-dim);}
+  .title{font-family:var(--f-display);font-size:36px;font-weight:500;color:var(--gold-bright);margin-top:10px;}
+  .sub{color:var(--cream-dim);font-size:14px;margin-top:6px;line-height:1.6;}
+
+  .panel{background:linear-gradient(180deg,var(--ink2),var(--ink));border:1px solid var(--gold-deep);
+    border-radius:16px;padding:24px 20px;margin-bottom:18px;}
+  .panel-label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+
+  /* current booking summary */
+  .cur .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);}
+  .cur .row:last-child{border-bottom:none}
+  .cur .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+  .cur .v{font-size:15px;color:var(--cream);text-align:right;}
+
+  /* calendar */
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+  .cal-title{font-family:var(--f-display);font-size:22px;color:var(--cream);}
+  .nav{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:transparent;
+    color:var(--cream);font-size:18px;cursor:pointer;transition:all .3s ease;}
+  .nav:hover:not(:disabled){border-color:var(--gold);color:var(--gold);}
+  .nav:disabled{opacity:.3;cursor:not-allowed}
+  .wk{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:8px;}
+  .wk span{text-align:center;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);padding:4px 0;}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+  .day{aspect-ratio:1/1;border:1px solid transparent;background:transparent;border-radius:8px;color:var(--cream);
+    font-size:14px;font-weight:500;cursor:pointer;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:3px;transition:all .2s ease;position:relative;}
+  .day .dot{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+  .day.blank{cursor:default}
+  .day:not(.blank):hover:not(:disabled){border-color:var(--gold);background:rgba(201,168,106,.08);}
+  .day.today{border-color:rgba(201,168,106,.5);color:var(--gold-bright);}
+  .day.past,.day.closed{color:rgba(245,237,225,.18);cursor:not-allowed;text-decoration:line-through;}
+  .day.past .dot,.day.closed .dot{display:none}
+  .day.sel{background:var(--grad);color:var(--ink);border-color:var(--gold-bright);font-weight:700;}
+  .day.sel .dot{background:var(--ink)}
+
+  /* times */
+  .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .slot{padding:12px 6px;border:1px solid var(--line);background:transparent;border-radius:8px;color:var(--cream);
+    font-size:13px;font-weight:500;cursor:pointer;transition:all .25s ease;}
+  .slot:hover{border-color:var(--gold);color:var(--gold-bright);background:rgba(201,168,106,.08);}
+  .slot.sel{background:var(--grad);color:var(--ink);border-color:var(--gold-bright);font-weight:700;}
+  .empty{grid-column:1/-1;text-align:center;color:var(--cream-dim);font-size:13px;font-style:italic;padding:18px;}
+
+  /* note */
+  textarea{width:100%;min-height:90px;resize:vertical;background:var(--ink);border:1px solid var(--line);
+    border-radius:10px;padding:14px;color:var(--cream);font-family:var(--f-body);font-size:15px;line-height:1.5;}
+  textarea:focus{outline:none;border-color:var(--gold);}
+  textarea::placeholder{color:var(--cream-dim);opacity:.6;}
+
+  .send{width:100%;margin-top:4px;background:var(--grad);color:var(--ink);border:none;border-radius:100px;
+    padding:18px;font-family:var(--f-body);font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    cursor:pointer;transition:transform .3s ease,box-shadow .3s ease;}
+  .send:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(230,201,137,.5);}
+  .send:disabled{opacity:.45;cursor:not-allowed}
+
+  /* success */
+  .hidden{display:none!important}
+  .success{text-align:center;background:linear-gradient(180deg,var(--ink2),var(--ink));
+    border:1px solid var(--gold-deep);border-radius:18px;padding:40px 28px;}
+  .check-wrap{width:104px;height:104px;margin:0 auto 8px;position:relative;}
+  .check-wrap svg{width:100%;height:100%}
+  .check-wrap .glow{position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle,rgba(230,201,137,.35),transparent 65%);filter:blur(8px);
+    animation:pulse 2.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.6;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}
+  .ring{fill:none;stroke:var(--gold);stroke-width:3;stroke-dasharray:289;stroke-dashoffset:289;animation:draw .8s ease forwards}
+  .tick{fill:none;stroke:var(--gold-bright);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:60;stroke-dashoffset:60;animation:draw .5s ease .7s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .badge{display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--gold);border-radius:10px;
+    padding:16px;margin:14px 0 22px;color:var(--gold-bright);font-size:13px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;background:rgba(201,168,106,.06);}
+  .badge svg{width:22px;height:22px;stroke:var(--gold-bright)}
+  .home{display:inline-block;margin-top:8px;color:var(--cream-dim);text-decoration:none;font-size:13px;
+    letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);border-radius:100px;padding:13px 26px;}
+  .home:hover{border-color:var(--gold);color:var(--gold-bright)}
+  .err{color:#e0a0a0;font-size:14px;margin-top:10px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- FORM VIEW -->
+    <div id="form">
+      <div class="head">
+        <img src="image/logo.png" alt="Rabus Hair" class="logo" />
+        <div class="brand">Rabus Hair Africa Braiding</div>
+        <h1 class="title">Reschedule Appointment</h1>
+        <p class="sub">Pick a new date &amp; time, add a note, and we'll notify the client.</p>
+      </div>
+
+      <!-- current booking -->
+      <div class="panel cur">
+        <div class="panel-label">Current Booking</div>
+        <div id="curDetails"></div>
+      </div>
+
+      <!-- calendar -->
+      <div class="panel">
+        <div class="panel-label">Pick New Date</div>
+        <div class="cal-head">
+          <button class="nav" id="prev" aria-label="Previous month">‹</button>
+          <span class="cal-title" id="calTitle">Month YYYY</span>
+          <button class="nav" id="next" aria-label="Next month">›</button>
+        </div>
+        <div class="wk"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+        <div class="grid" id="grid"></div>
+      </div>
+
+      <!-- times -->
+      <div class="panel">
+        <div class="panel-label">⏰ Pick New Time</div>
+        <div class="slots" id="slots"><p class="empty">Select a date first.</p></div>
+      </div>
+
+      <!-- note -->
+      <div class="panel">
+        <div class="panel-label">✍️ Message to Client</div>
+        <textarea id="note" placeholder="e.g. So sorry! Could you come in on Friday instead? 11:30am works best for us."></textarea>
+      </div>
+
+      <button class="send" id="send" disabled>Send Reschedule to Client</button>
+      <p class="err hidden" id="errMsg"></p>
+    </div>
+
+    <!-- SUCCESS VIEW -->
+    <div id="done" class="hidden">
+      <div class="success">
+        <img src="image/logo.png" alt="Rabus Hair" class="logo" />
+        <div class="brand">Rabus Hair Africa Braiding</div>
+        <div class="check-wrap">
+          <div class="glow"></div>
+          <svg viewBox="0 0 100 100"><circle class="ring" cx="50" cy="50" r="46"/><path class="tick" d="M28 52 L44 68 L73 35"/></svg>
+        </div>
+        <h1 class="title">Reschedule Sent!</h1>
+        <div class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h20v12H2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          Email Notification Sent Successfully
+        </div>
+        <p class="sub" style="margin-bottom:22px">Your client has been notified of the new appointment date and time. Their $50 deposit will carry over to the new appointment.</p>
+        <div class="panel cur" style="text-align:left" id="doneDetails"></div>
+        <a href="index.html" class="home">Return to Site</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js?v=2"></script>
+  <script>
+  (() => {
+    const CFG = window.RH_CONFIG || {};
+    const p = new URLSearchParams(location.search);
+    const data = {
+      reference: p.get('ref')      || '—',
+      client_name: p.get('name')   || 'Guest',
+      client_email: p.get('email') || '',
+      service: p.get('service')    || '—',
+      prev_date: p.get('date')     || '—',
+      prev_time: p.get('time')     || '—'
+    };
+
+    // Fill current-booking panel
+    document.getElementById('curDetails').innerHTML = `
+      <div class="row"><span class="k">Client</span><span class="v">${data.client_name}</span></div>
+      <div class="row"><span class="k">Email</span><span class="v">${data.client_email || '—'}</span></div>
+      <div class="row"><span class="k">Style</span><span class="v">${data.service}</span></div>
+      <div class="row"><span class="k">Original</span><span class="v">${data.prev_date} · ${data.prev_time}</span></div>`;
+
+    /* ---- calendar (open by default) ---- */
+    const CLOSED=[]; // open every day (Sundays included)
+    const TIMES=['07:00 AM','08:00 AM','09:00 AM','10:00 AM','11:00 AM','12:00 PM','01:00 PM','02:00 PM','03:00 PM','04:00 PM','05:00 PM','06:00 PM'];
+    const today=new Date(); today.setHours(0,0,0,0);
+    let vY=today.getFullYear(), vM=today.getMonth();
+    let selDate=null, selTime=null;
+
+    const grid=document.getElementById('grid'), calTitle=document.getElementById('calTitle');
+    const slots=document.getElementById('slots'), sendBtn=document.getElementById('send');
+    const prevBtn=document.getElementById('prev'), nextBtn=document.getElementById('next');
+
+    const iso=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const pretty=(isoStr)=>{const d=new Date(isoStr+'T00:00:00');return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});};
+
+    function renderCal(){
+      calTitle.textContent=new Date(vY,vM,1).toLocaleString('en-US',{month:'long',year:'numeric'});
+      grid.innerHTML='';
+      const start=new Date(vY,vM,1).getDay();
+      const days=new Date(vY,vM+1,0).getDate();
+      for(let i=0;i<start;i++){const b=document.createElement('span');b.className='day blank';grid.appendChild(b);}
+      for(let d=1;d<=days;d++){
+        const date=new Date(vY,vM,d); const dstr=iso(vY,vM,d);
+        const btn=document.createElement('button'); btn.className='day';
+        btn.innerHTML=`${d}<span class="dot"></span>`;
+        const past=date<today, closed=CLOSED.includes(date.getDay());
+        if(date.getTime()===today.getTime())btn.classList.add('today');
+        if(past)btn.classList.add('past'); if(closed)btn.classList.add('closed');
+        if(selDate===dstr)btn.classList.add('sel');
+        if(past||closed){btn.disabled=true;}
+        else btn.addEventListener('click',()=>{selDate=dstr;selTime=null;renderCal();renderSlots();updateSend();});
+        grid.appendChild(btn);
+      }
+      prevBtn.disabled=(vY===today.getFullYear()&&vM===today.getMonth());
+    }
+    function renderSlots(){
+      slots.innerHTML='';
+      if(!selDate){slots.innerHTML='<p class="empty">Select a date first.</p>';return;}
+      TIMES.forEach(t=>{
+        const b=document.createElement('button'); b.className='slot'+(selTime===t?' sel':''); b.textContent=t;
+        b.addEventListener('click',()=>{selTime=t;renderSlots();updateSend();});
+        slots.appendChild(b);
+      });
+    }
+    function updateSend(){ sendBtn.disabled=!(selDate&&selTime); }
+
+    prevBtn.addEventListener('click',()=>{if(prevBtn.disabled)return;vM--;if(vM<0){vM=11;vY--;}renderCal();});
+    nextBtn.addEventListener('click',()=>{vM++;if(vM>11){vM=0;vY++;}renderCal();});
+    renderCal(); renderSlots(); // OPEN BY DEFAULT
+
+    /* ---- send reschedule ---- */
+    function show(id){document.getElementById('form').classList.toggle('hidden',id!=='form');document.getElementById('done').classList.toggle('hidden',id!=='done');}
+    const errMsg=document.getElementById('errMsg');
+
+    sendBtn.addEventListener('click',async()=>{
+      if(!selDate||!selTime)return;
+      if(!data.client_email){errMsg.textContent='No client email was provided, so the email could not be sent.';errMsg.classList.remove('hidden');return;}
+      if(sendBtn.dataset.sending==='1')return;          // in-flight lock: prevent double-tap
+      sendBtn.dataset.sending='1';
+      sendBtn.disabled=true; sendBtn.textContent='Sending…';
+      const note=document.getElementById('note').value.trim() || 'We look forward to seeing you at your new appointment time.';
+      const newDateNice=pretty(selDate);
+      // Per-(booking + slot) local lock so a refresh doesn't re-send the same reschedule
+      const localKey='rc_resched_'+data.reference+'_'+selDate+'_'+selTime;
+      if(localStorage.getItem(localKey)){
+        document.getElementById('doneDetails').innerHTML=`
+          <div class="row"><span class="k">Client</span><span class="v">${data.client_name}</span></div>
+          <div class="row"><span class="k">Email</span><span class="v">${data.client_email}</span></div>
+          <div class="row"><span class="k">Style</span><span class="v">${data.service}</span></div>
+          <div class="row"><span class="k">Original</span><span class="v">${data.prev_date} · ${data.prev_time}</span></div>
+          <div class="row"><span class="k">New Date</span><span class="v">${newDateNice}</span></div>
+          <div class="row"><span class="k">New Time</span><span class="v">${selTime}</span></div>`;
+        show('done'); return;
+      }
+      try{ localStorage.setItem(localKey,'1'); }catch(e){}   // claim before send — no double fire
+      try{
+        emailjs.init({publicKey:CFG.EMAILJS.client.publicKey});
+        await emailjs.send(
+          CFG.EMAILJS.client.serviceId,
+          CFG.EMAILJS.client.rescheduleTemplate,
+          {
+            to_email:data.client_email, client_email:data.client_email, client_name:data.client_name,
+            service:data.service, reference:data.reference,
+            previous_date:data.prev_date, previous_time:data.prev_time,
+            new_date:newDateNice, new_time:selTime, salon_note:note
+          },
+          {publicKey:CFG.EMAILJS.client.publicKey}
+        );
+        // best-effort status + new date in Supabase
+        try{
+          if(window.supabase&&CFG.SUPABASE){
+            const sb=window.supabase.createClient(CFG.SUPABASE.url,CFG.SUPABASE.anonKey);
+            await sb.from('bookings').update({status:'reschedule',booking_date:selDate,booking_time:selTime,notes:note}).eq('reference',data.reference);
+          }
+        }catch(e){console.warn('status update failed',e);}
+
+        document.getElementById('doneDetails').innerHTML=`
+          <div class="row"><span class="k">Client</span><span class="v">${data.client_name}</span></div>
+          <div class="row"><span class="k">Email</span><span class="v">${data.client_email}</span></div>
+          <div class="row"><span class="k">Style</span><span class="v">${data.service}</span></div>
+          <div class="row"><span class="k">Original</span><span class="v">${data.prev_date} · ${data.prev_time}</span></div>
+          <div class="row"><span class="k">New Date</span><span class="v">${newDateNice}</span></div>
+          <div class="row"><span class="k">New Time</span><span class="v">${selTime}</span></div>`;
+        show('done');
+      }catch(e){
+        console.error('reschedule email failed',e);
+        errMsg.textContent='The email failed to send. Please check your connection and try again.';
+        errMsg.classList.remove('hidden');
+        sendBtn.disabled=false; sendBtn.textContent='Send Reschedule to Client';
+        sendBtn.dataset.sending='0';
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

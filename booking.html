@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="width" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="theme-color" content="#000000" />
+  <title>Book Appointment — Rabus Hair Africa Braiding</title>
+  <meta name="description" content="Reserve your session at Rabus Hair — Chicago's luxury African hair braiding salon." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="image/logo.png" />
+  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="booking.css?v=2" />
+</head>
+<body class="booking-body">
+
+  <!-- ============ LUXURY LOADER ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__grain"></div>
+    <div class="loader__inner">
+      <div class="loader__logo-wrap">
+        <div class="loader__halo"></div>
+        <span class="loader__ring loader__ring--outer"></span>
+        <span class="loader__ring loader__ring--inner"></span>
+        <span class="loader__orbit"></span>
+        <img src="image/logo.png" alt="" class="loader__logo" />
+      </div>
+      <div class="loader__caption">
+        <span class="loader__brand">Rabus Hair</span>
+        <span class="loader__divider"></span>
+        <span class="loader__sub">Booking Experience</span>
+      </div>
+      <div class="loader__bar-wrap">
+        <div class="loader__bar">
+          <div class="loader__fill" id="loaderFill">
+            <div class="loader__shimmer"></div>
+          </div>
+        </div>
+        <div class="loader__meta">
+          <span class="loader__percent" id="loaderPercent">0%</span>
+          <span class="loader__hint">Securing your session</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MINIMAL NAV ============ -->
+  <header class="bnav">
+    <a href="index.html" class="bnav__brand">
+      <img src="image/logo.png" alt="Rabus Hair" class="bnav__logo" />
+      <span class="bnav__name">Rabus Hair</span>
+    </a>
+    <div class="bnav__right">
+      <!-- Google profile chip — hidden until sign-in completes -->
+      <div class="bnav__user-wrap">
+        <button class="bnav__user is-hidden" id="navUser" type="button" aria-haspopup="true" aria-expanded="false">
+          <span class="bnav__avatar" id="navAvatar">&nbsp;</span>
+          <span class="bnav__userName" id="navUserName">&nbsp;</span>
+        </button>
+        <div class="bnav__menu is-hidden" id="navMenu" role="menu">
+          <div class="bnav__menu-head">
+            <span class="bnav__menu-avatar" id="navMenuAvatar">&nbsp;</span>
+            <div class="bnav__menu-id">
+              <span class="bnav__menu-name" id="navMenuName">&nbsp;</span>
+              <span class="bnav__menu-email" id="navMenuEmail">&nbsp;</span>
+            </div>
+          </div>
+          <button class="bnav__menu-item" id="navSignOut" type="button" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 17l5-5-5-5M21 12H9M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+            Sign out
+          </button>
+        </div>
+      </div>
+      <a href="index.html" class="bnav__back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        <span>Exit</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ============ PROGRESS BAR · 5 BOOKING STEPS ============ -->
+  <!-- (Sign-In is a gate and not part of the visible booking steps) -->
+  <div class="bprogress is-hidden" id="bprogress" data-step="0">
+    <div class="bprogress__inner">
+      <div class="bprogress__step is-active" data-step="2">
+        <span class="bprogress__num">1</span>
+        <span class="bprogress__label">Service</span>
+      </div>
+      <div class="bprogress__line"></div>
+      <div class="bprogress__step" data-step="3">
+        <span class="bprogress__num">2</span>
+        <span class="bprogress__label">Phone</span>
+      </div>
+      <div class="bprogress__line"></div>
+      <div class="bprogress__step" data-step="4">
+        <span class="bprogress__num">3</span>
+        <span class="bprogress__label">Date &amp; Time</span>
+      </div>
+      <div class="bprogress__line"></div>
+      <div class="bprogress__step" data-step="5">
+        <span class="bprogress__num">4</span>
+        <span class="bprogress__label">Review</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ STAGE ============ -->
+  <main class="bstage" id="bstage">
+
+    <!-- ===== STEP 1 · SIGN IN GATE ===== -->
+    <!-- ===== STEP 0 · TERMS & CONDITIONS GATE ===== -->
+    <section class="bstep is-active" id="step0" data-step="0">
+      <div class="tac">
+        <div class="bcard__logo-wrap">
+          <div class="bcard__logo-glow"></div>
+          <img src="image/logo.png" alt="Rabus Hair" class="bcard__logo" />
+        </div>
+
+        <span class="tac__eyebrow">— Before You Begin</span>
+        <h1 class="tac__title">Terms &amp; <em>Conditions</em></h1>
+        <p class="tac__lede">Please read carefully and scroll to the end. Acceptance is required to proceed with your booking.</p>
+
+        <div class="tac__box" id="tacScroll" tabindex="0">
+
+          <h3>The Rabus Hair Promise</h3>
+          <p>The following terms apply when booking your appointment with <strong>RABUS HAIR AFRICA BRAIDING</strong>. We reserve the exclusive right to decline service to any client at any time. By booking, you agree to the policies below.</p>
+
+          <h3>Payment</h3>
+          <p><strong>All payments are made in person on the day of your appointment.</strong> No online payment and <strong>no deposit</strong> is required to book. Cash is accepted.</p>
+          <p>Pricing is subject to change at any time. Any change will <strong>not</strong> affect an appointment that has already been booked.</p>
+
+          <h3>Appointments &amp; Walk-Ins</h3>
+          <p>Appointments are recommended. <strong>Walk-ins are welcome</strong>, but please call ahead at <strong>+1 (312) 647-0604</strong> to confirm availability before coming to the salon.</p>
+
+          <h3>Coming to Your Appointment</h3>
+          <p>Please arrive with your hair <strong>freshly washed, blow-dried straight, and oil-free</strong>.</p>
+          <p>If your hair is not washed and blown out, a <strong>$30 wash &amp; blow-out</strong> service will be added. If your hair is washed but not blown out, a <strong>$20 straightening</strong> service will be added.</p>
+          <p>If your hair is short, please send a photo via Instagram <strong>@rabus_hair</strong> or text message prior to booking.</p>
+          <p>Please arrive on time. A <strong>15-minute grace period</strong> is extended to both the stylist and the client.</p>
+          <p><strong>Please note: we do not offer braiding services for men — children are welcome.</strong></p>
+          <p>We offer touch-up services — please call us to discuss your specific needs.</p>
+
+          <h3>Hair Extensions</h3>
+          <p>Details regarding hair extensions will be shared via text message once your appointment is confirmed.</p>
+          <p><strong>Your braiding hair is included in the price of your style</strong> — there is nothing extra to buy.</p>
+          <p>You are welcome to bring your own hair if you prefer — this is optional, and especially helpful if we do not carry the colour or type you want.</p>
+          <p>Please share your desired colour at least <strong>24 hours</strong> before your appointment so we can prepare it in advance.</p>
+          <p>If you are sensitive or allergic to hair extensions, we highly recommend adding an <strong>ACV (apple cider vinegar) rinse</strong> to your service for an additional <strong>$20</strong>.</p>
+          <p>An additional <strong>$20</strong> applies to any custom-made color (a blend of multiple colors).</p>
+
+          <h3>Cancellations &amp; Rescheduling</h3>
+          <p>A minimum of <strong>24 hours' notice</strong> is required to reschedule your appointment. This applies to both new and returning clients — <strong>NO EXCEPTIONS</strong>.</p>
+          <p>Appointments may be rescheduled <strong>once</strong> within 30 days of the original booking, subject to availability.</p>
+          <p>Late cancellations and no-shows may be required to rebook, and repeated no-shows may not be offered future appointments.</p>
+
+          <h3>Extras</h3>
+          <p>Each time you refer a new client to us, you will receive a <strong>$25 discount</strong> on your next service.</p>
+          <p>Please plan your day accordingly — there is no need to rush the stylist, as it will not shorten the time required to complete your service.</p>
+
+          <h3>During Your Service</h3>
+          <p>If you have any questions or concerns, please let us know <strong>during</strong> your service rather than waiting until it is complete.</p>
+
+          <h3>Response Time</h3>
+          <p>We truly appreciate your business. Please allow up to <strong>2 hours</strong> for a response during business hours. <strong>We are open every day, including Sundays, 7 AM – 6 PM.</strong></p>
+
+          <p class="tac__end">— End of Terms &amp; Conditions —</p>
+        </div>
+
+        <div class="tac__bar" aria-hidden="true"><div class="tac__fill" id="tacFill"></div></div>
+        <p class="tac__hint" id="tacHint">Scroll to the bottom to continue</p>
+
+        <label class="tac__check" id="tacCheckWrap">
+          <input type="checkbox" id="tacCheck" disabled />
+          <span class="tac__checkbox" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4 10-10"/></svg>
+          </span>
+          <span class="tac__checktext">I have read and accept the Terms &amp; Conditions of Rabus Hair Africa Braiding.</span>
+        </label>
+
+        <button class="btn btn--primary tac__continue" id="tacContinue" type="button" disabled>
+          <span>Continue</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="bstep" id="step1" data-step="1">
+
+      <!-- 1A: Welcome Back panel — shown when returning user already has a Google session -->
+      <div class="bcard bcard--welcome is-hidden" id="welcomeBack">
+        <div class="bcard__logo-wrap">
+          <div class="bcard__logo-glow"></div>
+          <img src="image/logo.png" alt="Rabus Hair" class="bcard__logo" />
+        </div>
+
+        <h1 class="bcard__title">
+          <em>Welcome back,</em><br>
+          <span id="wbFirstName">&nbsp;</span>
+        </h1>
+        <p class="bcard__lede">
+          You're still signed in. Continue with this account or switch to a different one.
+        </p>
+
+        <span class="account-pill__hint">
+          <svg class="account-pill__g" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47a5.4 5.4 0 0 1-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09A11.99 11.99 0 0 0 12 24z"/>
+            <path fill="#FBBC05" d="M5.27 14.29a7.21 7.21 0 0 1 0-4.58V6.62H1.29a12 12 0 0 0 0 10.76l3.98-3.09z"/>
+            <path fill="#EA4335" d="M12 4.77c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.69 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.77 12 4.77z"/>
+          </svg>
+          Continue with your Google account
+        </span>
+
+        <button class="account-pill" id="continueAsBtn" type="button">
+          <span class="account-pill__avatar" id="wbAvatar">&nbsp;</span>
+          <span class="account-pill__col">
+            <span class="account-pill__name" id="wbName">&nbsp;</span>
+            <span class="account-pill__email" id="wbEmail">&nbsp;</span>
+          </span>
+          <span class="account-pill__arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </button>
+
+        <button class="bcard__switch" id="switchAccountBtn" type="button">
+          Use a different Google account
+        </button>
+      </div>
+
+      <!-- 1B: Normal sign-in panel — shown for new users -->
+      <div class="bcard bcard--signin" id="signInCard">
+        <div class="bcard__logo-wrap">
+          <div class="bcard__logo-glow"></div>
+          <img src="image/logo.png" alt="Rabus Hair" class="bcard__logo" />
+        </div>
+
+        <h1 class="bcard__title">
+          <em>Welcome to</em><br>
+          Rabus Hair
+        </h1>
+        <p class="bcard__lede">
+          Sign in to reserve your session. We use secure Google Sign-In — your name and email are captured automatically.
+        </p>
+
+        <button class="gbtn" id="googleBtn" type="button">
+          <span class="gbtn__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+          </span>
+          <span class="gbtn__text">Continue with Google</span>
+        </button>
+
+        <p class="bcard__fineprint">
+          Secure sign-in via Google. Your name and email are captured automatically — no need to type them.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== STEP 2 · SERVICE (all 38 styles, 2-col mobile grid) ===== -->
+    <!-- ===== STEP 2 · CHOOSE ADULT OR KIDS ===== -->
+    <section class="bstep" id="step2" data-step="2">
+      <div class="bstep__head">
+        <span class="section-eyebrow">— Step 01 of 05</span>
+        <h2 class="bstep__title">Who is this <em>booking for?</em></h2>
+        <p class="bstep__lede">Choose a menu to see the right styles and pricing.</p>
+      </div>
+
+      <div class="bcat">
+        <button type="button" class="bcat__card" data-cat="adult">
+          <span class="bcat__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </span>
+          <span class="bcat__label">Adult Braids</span>
+          <span class="bcat__sub">Our full signature menu</span>
+          <span class="bcat__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span>
+        </button>
+
+        <button type="button" class="bcat__card" data-cat="kids">
+          <span class="bcat__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3.2"/><path d="M6 21c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M9 3.5c1-1 5-1 6 0"/></svg>
+          </span>
+          <span class="bcat__label">Kids Braids</span>
+          <span class="bcat__sub">Little ones, styled with care</span>
+          <span class="bcat__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span>
+        </button>
+      </div>
+
+      <div class="bform__actions">
+        <a href="index.html" class="btn btn--ghost">← Exit</a>
+        <button type="button" class="btn btn--primary" id="toServices" disabled>
+          <span>Continue</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 2B · CHOOSE SERVICE ===== -->
+    <section class="bstep" id="step2b" data-step="2.5">
+      <div class="bstep__head">
+        <span class="section-eyebrow">— Step 02 of 05</span>
+        <h2 class="bstep__title">Choose your <em>service.</em></h2>
+        <p class="bstep__lede">Select the style you'd like. You can refine the look in your notes later.</p>
+      </div>
+
+      <!-- Kids weave toggle (shown only for the Kids menu) -->
+      <div class="bweave is-hidden" id="weaveToggle" role="tablist" aria-label="Weave option">
+        <button type="button" class="bweave__opt is-active" data-weave="with" role="tab">With Weave</button>
+        <button type="button" class="bweave__opt" data-weave="without" role="tab">Without Weave</button>
+      </div>
+
+      <div class="bservices bservices--grid" id="bservices"><!-- populated by JS --></div>
+
+      <p class="bkids-note is-hidden" id="kidsNote">
+        For other braids not listed here, please <a href="tel:+13126470604">call for pricing — (312) 647-0604</a>.
+      </p>
+      <p class="bkids-note" id="adultNote">
+        For more information or a style not listed, please <a href="tel:+13126470604">call — (312) 647-0604</a>.
+      </p>
+
+      <div class="bform__actions">
+        <button type="button" class="btn btn--ghost" data-back-to-cat>← Back</button>
+        <button type="button" class="btn btn--primary" id="toPhone" disabled>
+          <span>Continue</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 3 · PHONE ===== -->
+    <section class="bstep" id="step3" data-step="3">
+      <div class="bstep__head">
+        <span class="section-eyebrow">— Step 03 of 05</span>
+        <h2 class="bstep__title">Your <em>phone number.</em></h2>
+        <p class="bstep__lede">So we can text you confirmations, reminders, and any updates about your appointment.</p>
+      </div>
+
+      <form class="bform bform--single" id="phoneForm" novalidate>
+        <div class="bfield bfield--full">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(314) 555-0177" autocomplete="tel" required />
+          <span class="bfield__hint">US numbers only. Standard message rates apply.</span>
+        </div>
+        <div class="bform__actions">
+          <button type="button" class="btn btn--ghost" data-back>← Back</button>
+          <button type="submit" class="btn btn--primary">
+            <span>Pick a Date</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===== STEP 4 · DATE & TIME (open calendar like Booksy) ===== -->
+    <section class="bstep" id="step4" data-step="4">
+      <div class="bstep__head">
+        <span class="section-eyebrow">— Step 04 of 05</span>
+        <h2 class="bstep__title">Pick a <em>date &amp; time.</em></h2>
+        <p class="bstep__lede">Open daily, 7AM–6PM · Appointments recommended — walk-ins welcome, please call ahead.</p>
+      </div>
+
+      <div class="bdt">
+        <!-- Calendar -->
+        <div class="bdt__cal" id="bdtCal">
+          <div class="bdt__cal-head">
+            <button type="button" class="bdt__nav" id="calPrev" aria-label="Previous month">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <span class="bdt__cal-title" id="calTitle">Month YYYY</span>
+            <button type="button" class="bdt__nav" id="calNext" aria-label="Next month">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+          <div class="bdt__cal-weekdays">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="bdt__cal-grid" id="calGrid"></div>
+        </div>
+
+        <!-- Time slots -->
+        <div class="bdt__times">
+          <div class="bdt__times-head">
+            <span class="bdt__times-label">Available times <span class="bdt__badge">Open Daily · 7–6</span></span>
+            <span class="bdt__times-date" id="bdtSelDate">Select a date</span>
+          </div>
+          <div class="bdt__slots" id="bdtSlots">
+            <p class="bdt__empty">Pick a date on the calendar to see open time slots.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bform__actions">
+        <button type="button" class="btn btn--ghost" data-back>← Back</button>
+        <button type="button" class="btn btn--primary" id="toPayment" disabled>
+          <span>Continue to Review</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 4 · REVIEW ===== -->
+    <section class="bstep" id="step5" data-step="5">
+      <div class="bstep__head">
+        <span class="section-eyebrow">— Step 05 of 05</span>
+        <h2 class="bstep__title">Review your <em>reservation.</em></h2>
+        <p class="bstep__lede">Please confirm the details below before submitting.</p>
+      </div>
+
+      <div class="breview" id="breview">
+        <div class="breview__group">
+          <span class="breview__label">Service</span>
+          <span class="breview__value" id="rService">—</span>
+        </div>
+        <div class="breview__group">
+          <span class="breview__label">Price</span>
+          <span class="breview__value" id="rPrice">—</span>
+        </div>
+        <div class="breview__group">
+          <span class="breview__label">Estimated Duration</span>
+          <span class="breview__value" id="rDuration">—</span>
+        </div>
+        <div class="breview__rule"></div>
+        <div class="breview__group">
+          <span class="breview__label">Name</span>
+          <span class="breview__value" id="rName">—</span>
+        </div>
+        <div class="breview__group">
+          <span class="breview__label">Email</span>
+          <span class="breview__value" id="rEmail">—</span>
+        </div>
+        <div class="breview__group">
+          <span class="breview__label">Phone</span>
+          <span class="breview__value" id="rPhone">—</span>
+        </div>
+        <div class="breview__rule"></div>
+        <div class="breview__group breview__group--big">
+          <span class="breview__label">Date &amp; Time</span>
+          <span class="breview__value breview__value--big" id="rDateTime">—</span>
+        </div>
+      </div>
+
+      <div class="bform__actions">
+        <button type="button" class="btn btn--ghost" data-edit>Edit Booking</button>
+        <button type="button" class="btn btn--primary" id="confirmBtn">
+          <span>Confirm Booking</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 5 · SUCCESS ===== -->
+    <section class="bstep" id="step6" data-step="6">
+      <div class="bsuccess">
+        <div class="bsuccess__check" id="successCheck">
+          <svg viewBox="0 0 100 100">
+            <circle class="bsuccess__circle" cx="50" cy="50" r="46" fill="none" stroke-width="2"/>
+            <path class="bsuccess__tick" d="M28 52 L45 68 L74 36" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="bsuccess__glow"></div>
+        </div>
+
+        <h2 class="bsuccess__title">
+          <em>Beautifully done.</em>
+        </h2>
+        <p class="bsuccess__msg">
+          Your hair appointment request has been submitted successfully.
+        </p>
+        <p class="bsuccess__sub">
+          You&rsquo;ll receive an email shortly confirming your reservation.
+        </p>
+
+        <div class="bsuccess__ref">
+          <span class="bsuccess__ref-label">Reference</span>
+          <span class="bsuccess__ref-id" id="refId">BG-—</span>
+        </div>
+
+        <div class="bsuccess__actions">
+          <a href="index.html" class="btn btn--ghost">Return Home</a>
+          <a href="gallery.html" class="btn btn--primary">
+            <span>Browse Gallery</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="config.js?v=2"></script>
+  <script src="booking.js?v=2"></script>
+</body>
+</html>

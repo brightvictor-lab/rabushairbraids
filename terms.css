@@ -1,0 +1,55 @@
+/* ============================================================
+   TERMS & CONDITIONS — standalone page
+   Inherits brand tokens + skin from style.css
+   ============================================================ */
+.terms-page { max-width: 780px; margin: 0 auto; padding: 118px 20px 80px; }
+
+/* override the legacy .terms-hero padding in style.css (was 180px top) */
+.terms-hero { padding: 0 !important; text-align: center; margin-bottom: 30px; }
+.terms-hero__eyebrow {
+  font-size: 11px; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--c-pink, #f04f9c);
+}
+.terms-hero__title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 600;
+  font-size: clamp(36px, 9vw, 60px); line-height: 1.06; margin: 12px 0 10px;
+  color: var(--c-cream, #f6ecef);
+}
+.terms-hero__title em {
+  font-style: italic;
+  background: linear-gradient(135deg, #8e6f3c, #c9a86a 30%, #e6c989 50%, #c9a86a 70%, #8e6f3c);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.terms-hero__lede {
+  max-width: 480px; margin: 0 auto; color: var(--c-cream-dim, #c8b0ba);
+  font-size: 15px; line-height: 1.7;
+}
+
+.terms-doc {
+  background: linear-gradient(165deg, rgba(28,7,16,.82), rgba(0,0,0,.94));
+  border: 1px solid rgba(201,168,106,.30); border-radius: 18px;
+  padding: 34px 30px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 18px 54px rgba(240,79,156,.10);
+}
+.terms-doc h3 {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600;
+  font-size: 24px; color: #e6c989; margin: 30px 0 12px;
+  padding-bottom: 8px; border-bottom: 1px solid rgba(201,168,106,.18);
+}
+.terms-doc h3:first-child { margin-top: 0; }
+.terms-doc p {
+  font-size: 15px; line-height: 1.8; color: var(--c-cream, #f6ecef); margin-bottom: 14px;
+}
+.terms-doc strong { color: #ffc0dd; font-weight: 500; }
+.terms-doc__end {
+  text-align: center; font-style: italic; color: rgba(201,168,106,.7);
+  margin: 30px 0 6px !important;
+}
+.terms-doc__cta {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; max-width: 340px; margin: 20px auto 4px;
+}
+@media (max-width: 480px) {
+  .terms-page { padding: 104px 14px 60px; }
+  .terms-doc { padding: 26px 20px; }
+}

@@ -1,0 +1,11 @@
+# Netlify reads this file automatically — no build step needed.
+
+# Security headers on everything
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Always re-check HTML so versioned CSS/JS (?v=) update immediately after a deploy.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate

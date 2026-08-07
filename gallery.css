@@ -1,0 +1,281 @@
+/* ============================================================
+   BEEGOLD · GALLERY
+   ============================================================ */
+
+body { opacity: 1; }
+body.is-loaded .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ---------- HERO ---------- */
+.gallery-hero {
+  position: relative;
+  padding: clamp(112px, 15vw, 150px) var(--pad-x) clamp(40px, 6vw, 64px);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 10%, rgba(201, 168, 106, 0.14), transparent 60%),
+    linear-gradient(180deg, #000000 0%, #120309 100%);
+}
+.gallery-hero__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.gallery-hero .h1 {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(48px, 9vw, 120px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--c-cream);
+  margin: 16px 0 32px;
+}
+.gallery-hero .h1 em {
+  font-style: italic;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gallery-hero .lede {
+  max-width: 540px;
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.7;
+  color: var(--c-cream-dim);
+}
+
+/* ---------- GRID ---------- */
+.gallery-grid-section {
+  padding: 8px var(--pad-x) 120px;
+}
+.gallery-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.gframe {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.gframe__media {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 6px;
+  position: relative;
+  transition: transform 0.6s var(--ease-luxe);
+}
+.gframe:hover .gframe__media {
+  transform: translateY(-4px);
+}
+.gframe__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--ease-luxe);
+}
+.gframe:hover .gframe__media img { transform: scale(1.04); }
+.gframe__media .placeholder {
+  min-height: 0;
+  height: 100%;
+}
+.gframe__cap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 4px;
+}
+.gframe__cap span:first-child {
+  font-family: var(--f-display);
+  font-style: italic;
+  color: var(--c-gold);
+  font-size: 14px;
+}
+.gframe__cap span:last-child {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-cream-dim);
+}
+
+@media (max-width: 1024px) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .gframe__cap span:last-child { font-size: 9px; letter-spacing: 0.18em; }
+}
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+
+/* ============================================================
+   LIGHTBOX — full-screen image viewer
+   ============================================================ */
+.gframe { cursor: pointer; }
+.gframe img { pointer-events: none; } /* clicks should reach the figure */
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(6, 4, 3, 0.96);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  display: none;
+  flex-direction: column;
+  align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.lightbox.is-open { display: flex; opacity: 1; }
+
+.lightbox__stage {
+  flex: 1;
+  width: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 70px 24px 20px;
+  overflow: hidden;
+  position: relative;
+  min-height: 0;   /* allow flex child to shrink */
+}
+.lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 30px 90px -20px rgba(0,0,0,.9);
+  opacity: 0;
+  transform: scale(.98);
+  transition: opacity .35s ease, transform .45s cubic-bezier(0.22,1,0.36,1);
+}
+.lightbox__img.is-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* loading spinner shown while image is loading */
+.lightbox__spinner {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 48px; height: 48px;
+  margin: -24px 0 0 -24px;
+  border-radius: 50%;
+  border: 3px solid rgba(201, 168, 106, 0.2);
+  border-top-color: var(--c-gold-bright, #e6c989);
+  animation: lbSpin 0.9s linear infinite;
+  display: none;
+}
+@keyframes lbSpin { to { transform: rotate(360deg); } }
+
+.lightbox__close {
+  position: absolute; top: 18px; right: 20px;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,106,.4);
+  background: rgba(20,16,11,.6);
+  color: var(--c-cream, #f6ecef);
+  font-size: 28px; line-height: 1;
+  cursor: pointer; z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.lightbox__close:hover, .lightbox__close:active {
+  border-color: #c9a86a; color: #e6c989; transform: rotate(90deg);
+}
+
+.lightbox__nav {
+  position: absolute; top: 50%;
+  transform: translateY(-50%);
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,106,.4);
+  background: rgba(20,16,11,.6);
+  color: var(--c-cream, #f6ecef);
+  font-size: 28px; line-height: 1;
+  cursor: pointer; z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.lightbox__nav:hover, .lightbox__nav:active {
+  border-color: #c9a86a; color: #e6c989; background: rgba(201,168,106,.12);
+}
+.lightbox__nav--prev { left: 12px; }
+.lightbox__nav--next { right: 12px; }
+
+.lightbox__bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px;
+  width: 100%; max-width: 900px;
+  padding: 0 24px 26px;
+}
+.lightbox__cap {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: #cdb7bf;
+}
+.lightbox__count {
+  font-size: 12px; letter-spacing: .2em; text-transform: uppercase;
+  color: #8e7a5c;
+}
+
+@media (max-width: 600px) {
+  .lightbox__stage { padding: 64px 12px 12px; }
+  .lightbox__nav { width: 42px; height: 42px; font-size: 24px; }
+  .lightbox__nav--prev { left: 6px; }
+  .lightbox__nav--next { right: 6px; }
+  .lightbox__close { width: 40px; height: 40px; font-size: 24px; top: 14px; right: 14px; }
+  .lightbox__cap { font-size: 14px; }
+  .lightbox__bar { padding: 0 16px 18px; gap: 12px; }
+}
+
+/* ============================================================
+   GALLERY FILTER TAB (F3 segmented + live counts)
+   ============================================================ */
+.gfilter { display: flex; justify-content: center; margin: 0 auto clamp(30px, 5vw, 46px); padding: 0 16px; }
+.gfilter__seg {
+  display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 5px;
+  padding: 6px; border: 1px solid rgba(201, 168, 106, 0.32); border-radius: 100px;
+  background: var(--c-ink-3); box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35); max-width: 100%;
+}
+.gchip {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-body); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 9px 16px; border-radius: 100px; border: none; background: none;
+  color: var(--c-cream-dim); cursor: pointer; transition: color 0.2s, background 0.25s;
+}
+.gchip .gchip__ct {
+  font-size: 10px; background: rgba(201, 168, 106, 0.2); color: var(--c-gold-bright);
+  border-radius: 100px; padding: 2px 7px; font-weight: 600; letter-spacing: 0;
+}
+.gchip:hover { color: var(--c-cream); }
+.gchip.is-active { background: var(--grad-gold); color: var(--c-ink); font-weight: 600; }
+.gchip.is-active .gchip__ct { background: rgba(22, 11, 16, 0.22); color: var(--c-ink); }
+@media (max-width: 480px) {
+  .gchip { font-size: 11px; padding: 8px 12px; letter-spacing: 0.05em; }
+  .gchip .gchip__ct { font-size: 9px; padding: 2px 6px; }
+}
+
+/* ============================================================
+   LIGHTBOX NAMEPLATE (L3 — hairstyle name on the full photo)
+   ============================================================ */
+.lightbox__plate {
+  position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 3;
+  padding: 8px 22px; border: 1px solid var(--c-gold); border-radius: 7px;
+  background: rgba(22, 11, 16, 0.55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  font-family: var(--f-display); font-style: italic; font-weight: 600;
+  font-size: clamp(17px, 2.4vw, 22px); color: var(--c-cream); white-space: nowrap;
+  pointer-events: none; opacity: 0; transition: opacity 0.4s ease 0.1s;
+}
+.lightbox__img.is-in ~ .lightbox__plate { opacity: 1; }

@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="width" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>Gallery — Rabus Hair Africa Braiding</title>
+  <meta name="description" content="A lookbook of signature braids and weaves by Rabus Hair — Chicago's luxury braiding atelier." />
+  <link rel="icon" type="image/png" href="image/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Italiana&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="gallery.css?v=2" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand">
+        <img src="image/logo.png" alt="" class="nav__logo" />
+        <div class="nav__brand-text">
+          <span class="nav__brand-name">Rabus Hair</span>
+          <span class="nav__brand-tag">Africa Hair Braiding</span>
+        </div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="services.html" class="nav__link">Services</a></li>
+        <li><a href="gallery.html" class="nav__link is-active">Gallery</a></li>
+        <li><a href="index.html#about" class="nav__link">About</a></li>
+        <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+        <li><a href="terms.html" class="nav__link">Terms</a></li>
+      </ul>
+      <a href="booking.html" class="nav__cta">
+        Book Appointment
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="nav__burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__drawer" id="navDrawer">
+    <img src="image/logo.png" alt="" class="drawer__logo" />
+    <a href="index.html" class="nav__drawer-link">Home</a>
+    <a href="services.html" class="nav__drawer-link">Services</a>
+    <a href="gallery.html" class="nav__drawer-link">Gallery</a>
+    <a href="index.html#about" class="nav__drawer-link">About</a>
+    <a href="index.html#contact" class="nav__drawer-link">Contact</a>
+    <a href="terms.html" class="nav__drawer-link">Terms &amp; Conditions</a>
+    <a href="booking.html" class="nav__drawer-cta">Book Appointment →</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="gallery-hero">
+    <div class="gallery-hero__inner">
+      <span class="eyebrow">— The Lookbook</span>
+      <h1 class="h1">A study in<br /><em>silhouette</em><br />and texture.</h1>
+      <p class="lede">
+        Forty finished works from our chair. Filter by style, or tap any frame to view it in full.
+      </p>
+    </div>
+  </section>
+
+  
+  <section class="gallery-grid-section">
+    <!-- FILTER TAB (F3 segmented + live counts) -->
+    <div class="gfilter">
+      <div class="gfilter__seg" id="galleryFilter">
+        <button class="gchip is-active" type="button" data-filter="all">All <span class="gchip__ct"></span></button>
+        <button class="gchip" type="button" data-filter="knotless">Knotless <span class="gchip__ct"></span></button>
+        <button class="gchip" type="button" data-filter="boho">Boho <span class="gchip__ct"></span></button>
+        <button class="gchip" type="button" data-filter="fulani">Fulani <span class="gchip__ct"></span></button>
+        <button class="gchip" type="button" data-filter="twist">Twists <span class="gchip__ct"></span></button>
+        <button class="gchip" type="button" data-filter="feedin">Feed-In <span class="gchip__ct"></span></button>
+        <button class="gchip" type="button" data-filter="french">French Curls <span class="gchip__ct"></span></button>
+        <button class="gchip" type="button" data-filter="ponytail">Ponytail <span class="gchip__ct"></span></button>
+</div>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+                              <figure class="gframe reveal-on-scroll" data-index="0" data-style="Miracle Knotless" style="--d:0.05s">
+        <div class="gframe__media">
+          <img src="image/g1.jpg" alt="Miracle Knotless — Rabus Hair" loading="eager" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="1" data-style="French Curls" style="--d:0.10s">
+        <div class="gframe__media">
+          <img src="image/g2.jpg" alt="French Curls — Rabus Hair" loading="eager" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="2" data-style="Stitch Braids" style="--d:0.15s">
+        <div class="gframe__media">
+          <img src="image/g3.jpg" alt="Stitch Braids — Rabus Hair" loading="eager" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="3" data-style="Knotless Braids" style="--d:0.20s">
+        <div class="gframe__media">
+          <img src="image/g4.jpg" alt="Knotless Braids — Rabus Hair" loading="eager" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="4" data-style="Large Knotless Braids" style="--d:0.25s">
+        <div class="gframe__media">
+          <img src="image/g5.jpg" alt="Large Knotless Braids — Rabus Hair" loading="eager" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="5" data-style="Fulani Braids" style="--d:0.30s">
+        <div class="gframe__media">
+          <img src="image/g6.jpg" alt="Fulani Braids — Rabus Hair" loading="eager" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="6" data-style="Fulani Braids" style="--d:0.05s">
+        <div class="gframe__media">
+          <img src="image/g7.jpg" alt="Fulani Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="7" data-style="Kinky Twist" style="--d:0.10s">
+        <div class="gframe__media">
+          <img src="image/g8.jpg" alt="Kinky Twist — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="8" data-style="French Curls" style="--d:0.15s">
+        <div class="gframe__media">
+          <img src="image/g9.jpg" alt="French Curls — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="9" data-style="Fulani with Knotless" style="--d:0.20s">
+        <div class="gframe__media">
+          <img src="image/g10.jpg" alt="Fulani with Knotless — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="10" data-style="Miracle Knotless" style="--d:0.25s">
+        <div class="gframe__media">
+          <img src="image/g11.jpg" alt="Miracle Knotless — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="11" data-style="Mohawk Braids" style="--d:0.30s">
+        <div class="gframe__media">
+          <img src="image/g12.jpg" alt="Mohawk Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="12" data-style="Twist Coil Braids" style="--d:0.05s">
+        <div class="gframe__media">
+          <img src="image/g13.jpg" alt="Twist Coil Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="13" data-style="Stitch Braids" style="--d:0.10s">
+        <div class="gframe__media">
+          <img src="image/g14.jpg" alt="Stitch Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="14" data-style="Fulani Braids" style="--d:0.15s">
+        <div class="gframe__media">
+          <img src="image/g15.jpg" alt="Fulani Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="15" data-style="Knotless Twist" style="--d:0.20s">
+        <div class="gframe__media">
+          <img src="image/g16.jpg" alt="Knotless Twist — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="16" data-style="French Curls" style="--d:0.25s">
+        <div class="gframe__media">
+          <img src="image/g17.jpg" alt="French Curls — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="17" data-style="Feed-in Braids" style="--d:0.30s">
+        <div class="gframe__media">
+          <img src="image/g18.jpg" alt="Feed-in Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="18" data-style="Butterfly Braids" style="--d:0.05s">
+        <div class="gframe__media">
+          <img src="image/g19.jpg" alt="Butterfly Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="19" data-style="Ponytail Boho" style="--d:0.10s">
+        <div class="gframe__media">
+          <img src="image/g20.jpg" alt="Ponytail Boho — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="20" data-style="Ponytail" style="--d:0.15s">
+        <div class="gframe__media">
+          <img src="image/g21.jpg" alt="Ponytail — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="21" data-style="Boho Knotless" style="--d:0.20s">
+        <div class="gframe__media">
+          <img src="image/g22.jpg" alt="Boho Knotless — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="22" data-style="Fulani Boho" style="--d:0.25s">
+        <div class="gframe__media">
+          <img src="image/g23.jpg" alt="Fulani Boho — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="23" data-style="Large Twist Boho" style="--d:0.30s">
+        <div class="gframe__media">
+          <img src="image/g24.jpg" alt="Large Twist Boho — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="24" data-style="Kids Two Ponytails" style="--d:0.05s">
+        <div class="gframe__media">
+          <img src="image/g25.jpg" alt="Kids Two Ponytails — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="25" data-style="Feed-in Braids" style="--d:0.10s">
+        <div class="gframe__media">
+          <img src="image/g26.jpg" alt="Feed-in Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="26" data-style="Fulani Boho" style="--d:0.15s">
+        <div class="gframe__media">
+          <img src="image/g27.jpg" alt="Fulani Boho — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="27" data-style="Box Braids" style="--d:0.20s">
+        <div class="gframe__media">
+          <img src="image/g28.jpg" alt="Box Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="28" data-style="Half Braids, Half Down" style="--d:0.25s">
+        <div class="gframe__media">
+          <img src="image/g29.jpg" alt="Half Braids, Half Down — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="29" data-style="Feed-in Braids" style="--d:0.30s">
+        <div class="gframe__media">
+          <img src="image/g30.jpg" alt="Feed-in Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="30" data-style="Fulani Three Layers" style="--d:0.05s">
+        <div class="gframe__media">
+          <img src="image/g31.jpg" alt="Fulani Three Layers — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="31" data-style="Knotless Braids" style="--d:0.10s">
+        <div class="gframe__media">
+          <img src="image/g32.jpg" alt="Knotless Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="32" data-style="Boho Knotless" style="--d:0.15s">
+        <div class="gframe__media">
+          <img src="image/g33.jpg" alt="Boho Knotless — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="33" data-style="Knotless Twist" style="--d:0.20s">
+        <div class="gframe__media">
+          <img src="image/g34.jpg" alt="Knotless Twist — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="34" data-style="Six Braids with Butterfly Ends" style="--d:0.25s">
+        <div class="gframe__media">
+          <img src="image/g35.jpg" alt="Six Braids with Butterfly Ends — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="35" data-style="Large Boho Knotless" style="--d:0.30s">
+        <div class="gframe__media">
+          <img src="image/g36.jpg" alt="Large Boho Knotless — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="36" data-style="Feed-in Braids" style="--d:0.05s">
+        <div class="gframe__media">
+          <img src="image/g37.jpg" alt="Feed-in Braids — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="37" data-style="Koruba" style="--d:0.10s">
+        <div class="gframe__media">
+          <img src="image/g38.jpg" alt="Koruba — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="38" data-style="Boho Knotless" style="--d:0.15s">
+        <div class="gframe__media">
+          <img src="image/g39.jpg" alt="Boho Knotless — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+      <figure class="gframe reveal-on-scroll" data-index="39" data-style="Miracle Knotless" style="--d:0.20s">
+        <div class="gframe__media">
+          <img src="image/g40.jpg" alt="Miracle Knotless — Rabus Hair" loading="lazy" />
+        </div>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX (full-screen viewer) -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <button class="lightbox__close" id="lbClose" type="button" aria-label="Close">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" type="button" aria-label="Previous">&#8249;</button>
+    <button class="lightbox__nav lightbox__nav--next" id="lbNext" type="button" aria-label="Next">&#8250;</button>
+    <div class="lightbox__stage" id="lbStage">
+      <img src="" alt="" class="lightbox__img" id="lbImg" />
+      <div class="lightbox__plate" id="lbPlate"></div>
+      <div class="lightbox__spinner" id="lbSpinner" aria-hidden="true"></div>
+    </div>
+    <div class="lightbox__bar">
+      <span class="lightbox__cap" id="lbCap"></span>
+      <span class="lightbox__count" id="lbCount"></span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="image/logo.png" alt="Rabus Hair" class="footer__logo" />
+        <p class="footer__tag">Luxury braiding artistry rooted in culture, crafted with love.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/rabus_hair" target="_blank" rel="noopener noreferrer" aria-label="Rabus Hair on Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.52.01-4.76.07-.9.04-1.39.2-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.9.2 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.81.28 1.71.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.2 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.2-1.39-.32-1.71a2.86 2.86 0 0 0-.69-1.06 2.86 2.86 0 0 0-1.06-.69c-.32-.13-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.76-.07zm0 2.76a5.3 5.3 0 1 1 0 10.6 5.3 5.3 0 0 1 0-10.6zm0 1.62a3.68 3.68 0 1 0 0 7.36 3.68 3.68 0 0 0 0-7.36zm5.5-1.31a1.24 1.24 0 1 1-2.48 0 1.24 1.24 0 0 1 2.48 0z"/></svg></a>
+          <a href="https://www.tiktok.com/@rabus_hair" target="_blank" rel="noopener noreferrer" aria-label="Rabus Hair on TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4>Atelier</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Visit</h4>
+          <ul>
+            <li>209 W 91st St</li>
+            <li>Chicago, IL 60620</li>
+            <li><a href="tel:+13126470604">+1 (312) 647-0604</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Book</h4>
+          <ul>
+            <li><a href="booking.html" class="footer__book">Reserve a Session →</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>© 2026 Rabus Hair Africa Braiding</span>
+      <span>Made with ✦ for extraordinary women</span>
+    </div>
+  </footer>
+
+  <script src="gallery.js?v=2"></script>
+  <script src="script.js?v=2"></script>
+</body>
+</html>
