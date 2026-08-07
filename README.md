@@ -2,7 +2,7 @@
 
 A full booking website for an African hair braiding salon in Chicago, IL. Customers browse styles, sign in with Google, pick a date and time, and submit a booking request. The salon owner is notified by email and can **approve** or **reschedule** the appointment in one tap — the customer is then automatically emailed the outcome.
 
-**🔗 Live site:** [add your Netlify link]
+**🔗 Live site:https://rabushairbraids.netlify.app/
 
 📍 **Find the salon on Google Maps:** Rabus Hair Africa Braiding is listed on Google Maps at [209 W 91st St, Chicago, IL 60620](https://www.google.com/maps?q=209+W+91st+St,+Chicago,+IL+60620) — the location is embedded live on the site's contact section.
 
