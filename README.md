@@ -8,13 +8,6 @@ A full booking website for an African hair braiding salon in Chicago, IL. Custom
 
 ---
 
-## Screenshots
-
-
-| Home | Booking Flow | Gallery |
-|------|--------------|---------|
-| ![Home](screenshots/home.png) | ![Booking](screenshots/booking.png) | ![Gallery](screenshots/gallery.png) |
-
 ---
 
 ## Features
